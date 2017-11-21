@@ -38,7 +38,7 @@ public class SourceFactory {
         }
         return current.get(sourceType);
     }
-
+    //serajoon 获得默认数据源-hive:0 kafka:1 Jdbc:8
     public static ISource getDefaultSource() {
         return getSource(KylinConfig.getInstanceFromEnv().getDefaultSource());
     }

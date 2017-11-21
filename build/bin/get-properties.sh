@@ -18,7 +18,8 @@
 #
 
 source $(cd -P -- "$(dirname -- "$0")" && pwd -P)/header.sh
-
+###serajoon $# 传给脚本的参数个数
+###serajoon 校验传递的参数个数
 if [ $# != 1 ]
 then
     echo 'invalid input'

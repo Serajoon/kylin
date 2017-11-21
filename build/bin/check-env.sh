@@ -21,13 +21,13 @@ source $(cd -P -- "$(dirname -- "$0")" && pwd -P)/header.sh
 
 ## ${dir} assigned to $KYLIN_HOME/bin in header.sh
 source ${dir}/find-hadoop-conf-dir.sh
-
+###serajoon if [ -z String] String长度为0则为真
 if [ -z "${kylin_hadoop_conf_dir}" ]; then
     hadoop_conf_param=
 else
     hadoop_conf_param="--config ${kylin_hadoop_conf_dir}"
 fi
-
+###serajoon 判断KYLIN_HOME是否为空值
 if [ -z "$KYLIN_HOME" ]
 then
     quit 'Please make sure KYLIN_HOME has been set'

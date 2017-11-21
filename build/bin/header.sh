@@ -38,7 +38,10 @@ then
 	dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 	
 	# set KYLIN_HOME with consideration for multiple instances that are on the same node
+###serajoon ${KYLIN_HOME:-"${dir}/../"} 检查环境变量KYLIN_HOME是否设置，如果没设置，则为 ${dir}/../
+###serajoon $(var:-default)   当var为空或未定义时整个表达式的值为default
 	KYLIN_HOME=${KYLIN_HOME:-"${dir}/../"}
+### 不用export定义的变量只对该shell有效，对子shell也是无效的
 	export KYLIN_HOME=`cd "$KYLIN_HOME"; pwd`
 	dir="$KYLIN_HOME/bin"
 	

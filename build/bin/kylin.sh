@@ -21,13 +21,21 @@
 
 
 
-
+###serajoon -P 显示实际物理路径，而不是link路径
+###serajoon && pwd:如果&&前面的命令cd执行成功，执行pwd(即cd到的路径)
+###serajoon 进入当前shell所在的目录
+###serajoon source header.sh中的变量会保存在当前shell
+###serajoon $@ 所有参数列表
+###serajoon 进入kylin.sh文件所在的目录，加载同目录下文件名为header.sh的文件
+###serajoon source是在当前shell环境中运行脚本。source可以让脚本影响它们的父shell环境
+###serajoon header.sh 定义KYLIN_HOME
 source $(cd -P -- "$(dirname -- "$0")" && pwd -P)/header.sh $@
 if [ "$verbose" = true ]; then
     shift
 fi
 
 source ${dir}/check-env.sh
+###serajoon mkdir -p 可以是一个路径名称。此时若路径中的某些目录尚不存在,加上此选项后,系统将自动建立好那些尚不存在的目录,即一次可以建立多个目录;
 mkdir -p ${KYLIN_HOME}/logs
 mkdir -p ${KYLIN_HOME}/ext
 
@@ -56,6 +64,8 @@ function retrieveDependency() {
 }
 
 # start command
+###serajoon $1:传递给shell脚本的第一个参数 $0:脚本本身的名字
+###serajoon -f 文件存在且是一个普通文件
 if [ "$1" == "start" ]
 then
     if [ -f "${KYLIN_HOME}/pid" ]
