@@ -45,6 +45,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
+
 /**
  * @author xduo
  */
@@ -54,9 +56,10 @@ public class ProjectController extends BasicController {
     private static final Logger logger = LoggerFactory.getLogger(ProjectController.class);
 
     private static final char[] VALID_PROJECTNAME = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_".toCharArray();
-
-    @Autowired
-    @Qualifier("projectService")
+    //serajoon
+    //@Autowired
+    //@Qualifier("projectService")
+    @Resource(name = "projectService")
     private ProjectService projectService;
 
     @Autowired

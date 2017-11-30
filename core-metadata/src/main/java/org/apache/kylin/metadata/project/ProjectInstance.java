@@ -305,13 +305,14 @@ public class ProjectInstance extends RootPersistentEntity {
     }
 
     public void init() {
+        //serajoon 项目名
         if (name == null)
             name = ProjectInstance.DEFAULT_PROJECT_NAME;
-
+        //serajoon cube信息
         if (realizationEntries == null) {
             realizationEntries = new ArrayList<RealizationEntry>();
         }
-
+        //serajoon model表信息
         if (tables == null)
             tables = new TreeSet<String>();
 

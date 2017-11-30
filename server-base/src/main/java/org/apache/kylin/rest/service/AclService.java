@@ -100,6 +100,10 @@ public class AclService implements MutableAclService {
     public AclService() throws IOException {
         fieldAces.setAccessible(true);
         fieldAcl.setAccessible(true);
+        /**
+         * KylinConfig.getInstanceFromEnv()返回的是KylinConfig中的static属性SYS_ENV_INSTANCE
+         * System.identityHashCode(KylinConfig.getInstanceFromEnv())与初始启动时的hascode相等,是同一个
+         */
         aclStore = ResourceStore.getStore(KylinConfig.getInstanceFromEnv());
     }
 

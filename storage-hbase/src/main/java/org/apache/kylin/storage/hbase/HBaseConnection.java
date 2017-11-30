@@ -218,6 +218,7 @@ public class HBaseConnection {
         // find configuration
         Configuration conf = configCache.get(url);
         if (conf == null) {
+            //serajoon url=kylin_metadata@hbase,hbase.client.scanner.timeout.period=10000,hbase.rpc.timeout=5000,hbase.client.retries.number=1
             conf = newHBaseConfiguration(url);
             configCache.put(url, conf);
         }

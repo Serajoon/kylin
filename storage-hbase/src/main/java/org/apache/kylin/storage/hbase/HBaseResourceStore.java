@@ -89,6 +89,7 @@ public class HBaseResourceStore extends ResourceStore {
         super(kylinConfig);
         metadataUrl = buildMetadataUrl(kylinConfig);
         tableName = metadataUrl.getIdentifier();
+        //serajoon 创建元数据表kylin_metadata如果不存在
         createHTableIfNeeded(tableName);
     }
 

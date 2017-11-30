@@ -37,7 +37,6 @@ public class DebugTomcat {
     public static void setupDebugEnv() {
         try {
             System.setProperty("log4j.configuration", "file:../build/conf/kylin-tools-log4j.properties");
-
             // test_case_data/sandbox/ contains HDP 2.2 site xmls which is dev sandbox
             KylinConfig.setSandboxEnvIfPossible();
             overrideDevJobJarLocations();
@@ -120,7 +119,7 @@ public class DebugTomcat {
         StandardServer server = (StandardServer) tomcat.getServer();
         AprLifecycleListener listener = new AprLifecycleListener();
         server.addLifecycleListener(listener);
-
+        //serajoon 设置内嵌的tomcat启动环境 contextPath,docBase
         Context webContext = tomcat.addWebapp("/kylin", webBase.getAbsolutePath());
         ErrorPage notFound = new ErrorPage();
         notFound.setErrorCode(404);

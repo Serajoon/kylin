@@ -67,6 +67,9 @@ public class ClassUtil {
     }
 
     public static <T> Class<? extends T> forName(String name, Class<T> clz) throws ClassNotFoundException {
+        /**serajoon
+         * org.apache.kylin.storage.hbase.HBaseResourceStore
+         */
         name = forRenamedClass(name);
         return (Class<? extends T>) Class.forName(name);
     }

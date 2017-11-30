@@ -37,7 +37,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class JsonUtil {
-
+    //serajoon 重用对象映射器来节省内存占用
     // reuse the object mapper to save memory footprint
     private static final ObjectMapper mapper = new ObjectMapper();
     private static final ObjectMapper indentMapper = new ObjectMapper();

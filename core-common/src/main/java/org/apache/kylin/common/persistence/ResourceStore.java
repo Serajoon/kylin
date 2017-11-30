@@ -79,6 +79,9 @@ abstract public class ResourceStore {
         logger.info("Using metadata url " + metadataUrl + " for resource store");
         String clsName = kylinConfig.getResourceStoreImpls().get(metadataUrl.getScheme());
         try {
+            /**serajoon
+             * HBaseResourceStore
+             */
             Class<? extends ResourceStore> cls = ClassUtil.forName(clsName, ResourceStore.class);
             ResourceStore store = cls.getConstructor(KylinConfig.class).newInstance(kylinConfig);
             if (!store.exists(METASTORE_UUID_TAG)) {

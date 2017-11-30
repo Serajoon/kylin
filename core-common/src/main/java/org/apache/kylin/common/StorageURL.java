@@ -36,7 +36,7 @@ import com.google.common.collect.ImmutableMap;
  * Immutable by design.
  */
 public class StorageURL {
-
+    //serajoon CacheBuilder com.google.common
     private static final LoadingCache<String, StorageURL> cache = CacheBuilder.newBuilder()//
             .maximumSize(100)//
             .build(new CacheLoader<String, StorageURL>() {

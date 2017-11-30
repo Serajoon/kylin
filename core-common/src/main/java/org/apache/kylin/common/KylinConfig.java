@@ -91,7 +91,10 @@ public class KylinConfig extends KylinConfigBase {
                 try {
                     config = new KylinConfig();
                     config.reloadKylinConfig(buildSiteProperties());
-
+                    /**
+                     * public static int identityHashCode(Object x)
+                     * 返回对象的哈希码
+                     */
                     logger.info("Initialized a new KylinConfig from getInstanceFromEnv : "
                             + System.identityHashCode(config));
                     SYS_ENV_INSTANCE = config;
@@ -309,7 +312,10 @@ public class KylinConfig extends KylinConfigBase {
 
         try {
             // 1. load default configurations from classpath. 
-            // we have a kylin-defaults.properties in kylin/core-common/src/main/resources 
+            // we have a kylin-defaults.properties in kylin/core-common/src/main/resources
+            /**serajoon 加载kylin默认配置
+             * OrderedProperties加载的配置会按顺序,JDK默认的Properties不安顺序显示
+             */
             URL resource = Thread.currentThread().getContextClassLoader().getResource("kylin-defaults.properties");
             Preconditions.checkNotNull(resource);
             logger.info("Loading kylin-defaults.properties from {}", resource.getPath());
