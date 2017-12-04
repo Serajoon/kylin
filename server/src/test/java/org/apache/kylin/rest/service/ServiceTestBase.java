@@ -44,6 +44,15 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 /**
  * @author xduo
  */
+
+/**serajoon
+ * @RunWith(SpringJUnit4ClassRunner.class):JUnit允许用户指定其它的单元测试执行类，
+ * 只需要我们的测试执行类继承类org.junit.runners.BlockJUnit4ClassRunner就可以了，
+ * Spring的执行类SpringJUnit4ClassRunner就是继承了该类。
+ * 我们平时用Spring也比较多，为了能够更加方便的引用配置文件，我们单元测试就使用了Spring实现的执行类
+ *
+ * @ContextConfiguration:指定Spring配置文件所在的路径，可以同时指定多个文件
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:applicationContext.xml", "classpath:kylinSecurity.xml" })
 @ActiveProfiles("testing")

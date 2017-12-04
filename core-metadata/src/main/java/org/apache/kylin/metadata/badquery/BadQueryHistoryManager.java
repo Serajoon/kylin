@@ -92,11 +92,11 @@ public class BadQueryHistoryManager {
 
         BadQueryHistory badQueryHistory = getBadQueriesForProject(project);
         NavigableSet<BadQueryEntry> entries = badQueryHistory.getEntries();
-        
+
         entries.remove(badQueryEntry); // in case the entry already exists and this call means to update
-        
+
         entries.add(badQueryEntry);
-        
+
         int maxSize = kylinConfig.getBadQueryHistoryNum();
         if (entries.size() > maxSize) {
             entries.pollFirst();

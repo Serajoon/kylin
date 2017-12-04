@@ -36,8 +36,11 @@ public class DebugTomcat {
 
     public static void setupDebugEnv() {
         try {
-            System.setProperty("log4j.configuration", "file:../build/conf/kylin-tools-log4j.properties");
+            //serajoon
+            //System.setProperty("log4j.configuration", "file:../build/conf/kylin-tools-log4j.properties");
+            System.setProperty("log4j.configuration", "../build/conf/kylin-tools-log4j.properties");
             // test_case_data/sandbox/ contains HDP 2.2 site xmls which is dev sandbox
+            //serajoon 将../examples/test_case_data/sandbox文件夹下的配置文件加载到classpath
             KylinConfig.setSandboxEnvIfPossible();
             overrideDevJobJarLocations();
 

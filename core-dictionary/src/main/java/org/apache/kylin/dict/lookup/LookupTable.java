@@ -73,6 +73,9 @@ abstract public class LookupTable<T> {
         }
     }
 
+    /**serajoon
+     * 校验维度表是否有重复
+     */
     @SuppressWarnings("unchecked")
     private void initRow(String[] cols, int[] keyIndex) {
         T[] value = convertRow(cols);

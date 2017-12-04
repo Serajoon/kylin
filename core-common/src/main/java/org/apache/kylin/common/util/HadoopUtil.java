@@ -56,6 +56,14 @@ public class HadoopUtil {
 
     private static Configuration healSickConfig(Configuration conf) {
         // https://issues.apache.org/jira/browse/KYLIN-953
+        /**serajoon
+         * hadoop.tmp.dir 其他临时目录的基础 默认是/tmp/hadoop-${user.name}
+         * 是hadoop文件系统依赖的基础配置，很多路径都依赖它。
+         * 如果hdfs-site.xml中不配置namenode和datanode的存放位置，默认就放在这个路径中
+         * hbase.fs.tmp.dir
+         * 默认文件系统（HDFS）中的临时目录
+         * 保留临时数据
+         */
         if (StringUtils.isBlank(conf.get("hadoop.tmp.dir"))) {
             conf.set("hadoop.tmp.dir", "/tmp");
         }
