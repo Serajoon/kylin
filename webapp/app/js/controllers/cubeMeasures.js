@@ -474,3 +474,11 @@ var NextParameterModalCtrl = function ($scope, scope,para,$modalInstance,cubeCon
   }
 
 }
+/*
+ Cube Designer选择Measures时Edit Measure的Name根据Param Value联动
+ */
+  function changeMeasureInput(id) {
+    var sel = document.getElementById(id);
+    var selected_val = sel.options[sel.selectedIndex].text;
+    document.getElementById("measureinput").value = selected_val.substring(selected_val.lastIndexOf(".") + 1).toLowerCase().trim();
+  }

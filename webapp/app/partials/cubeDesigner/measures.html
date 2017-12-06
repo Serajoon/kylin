@@ -90,7 +90,8 @@
                           <div class="row">
                               <label class="col-xs-12 col-sm-3 control-label no-padding-right font-color-default"><b>Name</b></label>
                               <div class="col-xs-12 col-sm-6">
-                                  <input type="text" placeholder="Name.." class="form-control"
+                                  <!--根据measureselect的值联动变化-->
+                                  <input id="measureinput" type="text" placeholder="Name.." class="form-control"
                                       tooltip="measure name.." tooltip-trigger="focus"
                                       ng-model="newMeasure.name" required />
                               </div>
@@ -149,7 +150,7 @@
                                   <b>&nbsp;&nbsp;1</b>
                                 </span>
                                   <!--!COUNT_DISTINCT-->
-                                <select class="form-control" chosen
+                                <select id="measureselect" onchange="changeMeasureInput(this.id)" class="form-control" chosen
                                       ng-if="newMeasure.function.parameter.type == 'column'"
                                       ng-model="newMeasure.function.parameter.value" required
                                       ng-change="measureReturnTypeUpdate();"
