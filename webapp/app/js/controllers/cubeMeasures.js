@@ -481,4 +481,5 @@ var NextParameterModalCtrl = function ($scope, scope,para,$modalInstance,cubeCon
     var sel = document.getElementById(id);
     var selected_val = sel.options[sel.selectedIndex].text;
     document.getElementById("measureinput").value = selected_val.substring(selected_val.lastIndexOf(".") + 1).toLowerCase().trim();
+    document.getElementById("measureok").disabled=false;
   }
