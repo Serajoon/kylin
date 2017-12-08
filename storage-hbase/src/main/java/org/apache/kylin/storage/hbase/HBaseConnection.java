@@ -220,7 +220,7 @@ public class HBaseConnection {
         if (conf == null) {
             //serajoon url=kylin_metadata@hbase,hbase.client.scanner.timeout.period=10000,hbase.rpc.timeout=5000,hbase.client.retries.number=1
             conf = newHBaseConfiguration(url);
-            configCache.put(url, conf);
+            configCache.put(url, conf);//serajoon configCache赋值
         }
 
         Connection connection = connPool.get(url);

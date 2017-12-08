@@ -117,6 +117,7 @@ abstract public class ResourceStore {
 
     /**
      * List resources and sub-folders under a given folder, return null if given path is not a folder
+     * serajoon 列出给定文件夹下的资源和子文件夹，如果给定路径不是文件夹，则返回null
      */
     final public NavigableSet<String> listResources(String folderPath) throws IOException {
         String path = norm(folderPath);
@@ -160,7 +161,7 @@ abstract public class ResourceStore {
 
         DataInputStream din = new DataInputStream(res.inputStream);
         try {
-            T r = serializer.deserialize(din);
+            T r = serializer.deserialize(din);//serajoon 反序列化
             r.setLastModified(res.timestamp);
             return r;
         } finally {
@@ -423,7 +424,7 @@ abstract public class ResourceStore {
     public static interface Visitor {
         void visit(String path) throws IOException;
     }
-
+    //serajoon 递归扫描hbase资源
     public void scanRecursively(String path, Visitor visitor) throws IOException {
         NavigableSet<String> children = listResources(path);
         if (children != null) {

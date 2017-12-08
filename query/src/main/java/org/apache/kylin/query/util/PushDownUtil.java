@@ -78,7 +78,7 @@ public class PushDownUtil {
             return null;
 
         if (isSelect) {
-            logger.info("Query failed to utilize pre-calculation, routing to other engines", sqlException);
+            logger.info("Query failed to utilize pre-calculation, routing to other engines", sqlException);//serajoon 查询未能利用预计算，路由到其他引擎
             if (!isExpectedCause(sqlException)) {
                 logger.info("quit doPushDownQuery because prior exception thrown is unexpected");
                 return null;

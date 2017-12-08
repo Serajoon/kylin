@@ -84,7 +84,7 @@ import com.google.common.collect.Lists;
 public class CubeManager implements IRealizationProvider {
 
     private static String ALPHA_NUM = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
+    //serajoon hbase中kylin表的名字都是KYLIN_10位字符的字符串
     private static int HBASE_TABLE_LENGTH = 10;
     public static final Serializer<CubeInstance> CUBE_SERIALIZER = new JsonSerializer<CubeInstance>(CubeInstance.class);
 
@@ -632,7 +632,7 @@ public class CubeManager implements IRealizationProvider {
             Cuboid.clearCache(cube);
         }
     }
-
+    //serajoon 获得查找表
     public LookupStringTable getLookupTable(CubeSegment cubeSegment, JoinDesc join) {
 
         String tableName = join.getPKSide().getTableIdentity();

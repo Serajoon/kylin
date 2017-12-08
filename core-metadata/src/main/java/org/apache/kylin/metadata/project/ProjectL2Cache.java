@@ -302,7 +302,7 @@ class ProjectL2Cache {
             tableCache.exposedColumns.add(col.getColumnDesc());
         }
     }
-
+    //serajoon 项目信息缓存
     private static class ProjectCache {
         private String project;
         private Map<String, TableCache> tables = Maps.newHashMap();

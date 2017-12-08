@@ -65,22 +65,22 @@ import com.google.common.collect.Lists;
 public class HBaseResourceStore extends ResourceStore {
 
     private static final Logger logger = LoggerFactory.getLogger(HBaseResourceStore.class);
-
+    //kylin_metadata元数据表 一个列族f,两列c,t
     private static final String FAMILY = "f";
 
     private static final byte[] B_FAMILY = Bytes.toBytes(FAMILY);
 
-    private static final String COLUMN = "c";
+    private static final String COLUMN = "c"; //serajoon content
 
     private static final byte[] B_COLUMN = Bytes.toBytes(COLUMN);
 
-    private static final String COLUMN_TS = "t";
+    private static final String COLUMN_TS = "t"; //serajoon timestamp
 
     private static final byte[] B_COLUMN_TS = Bytes.toBytes(COLUMN_TS);
 
     final String tableName;
     final StorageURL metadataUrl;
-
+    //返回HBase连接对象Connection
     Connection getConnection() throws IOException {
         return HBaseConnection.get(metadataUrl);
     }
@@ -121,7 +121,7 @@ public class HBaseResourceStore extends ResourceStore {
     @Override
     protected NavigableSet<String> listResourcesImpl(String folderPath) throws IOException {
         final TreeSet<String> result = new TreeSet<>();
-
+        //serajoon KeyOnlyFilter:只返回每行的行键，值全部为空，这对于只关注于行键的应用场景来说非常合适，这样忽略掉其值就可以减少传递到客户端的数据量，能起到一定的优化作用
         visitFolder(folderPath, new KeyOnlyFilter(), new FolderVisitor() {
             @Override
             public void visit(String childPath, String fullPath, Result hbaseResult) {
@@ -157,7 +157,7 @@ public class HBaseResourceStore extends ResourceStore {
                 StringEntity.serializer);
         return entity.toString();
     }
-
+    //serajoon 查询hbase资源目录 扫描hbase rowkey 从/xxx/到/xxx0 ASCII /:47 0:48
     private void visitFolder(String folderPath, Filter filter, FolderVisitor visitor) throws IOException {
         assert folderPath.startsWith("/");
         String lookForPrefix = folderPath.endsWith("/") ? folderPath : folderPath + "/";
@@ -194,7 +194,7 @@ public class HBaseResourceStore extends ResourceStore {
     private void tuneScanParameters(Scan scan) {
         // divide by 10 as some resource like dictionary or snapshot can be very large
         // scan.setCaching(kylinConfig.getHBaseScanCacheRows() / 10);
-        scan.setCaching(kylinConfig.getHBaseScanCacheRows());
+            scan.setCaching(kylinConfig.getHBaseScanCacheRows());
 
         scan.setMaxResultSize(kylinConfig.getHBaseScanMaxResultSize());
         scan.setCacheBlocks(true);
@@ -257,7 +257,7 @@ public class HBaseResourceStore extends ResourceStore {
                 throw new IOException("Failed to read resource at " + resPath, ex);
             }
         } else {
-            return new ByteArrayInputStream(value);
+            return new ByteArrayInputStream(value);//serajoon 字节输入流
         }
     }
 
@@ -357,7 +357,7 @@ public class HBaseResourceStore extends ResourceStore {
     protected String getReadableResourcePathImpl(String resPath) {
         return tableName + "(key='" + resPath + "')@" + kylinConfig.getMetadataUrl();
     }
-
+    //serajoon 从HTable获取数据
     private Result getFromHTable(String path, boolean fetchContent, boolean fetchTimestamp) throws IOException {
         Table table = getConnection().getTable(TableName.valueOf(tableName));
         try {
@@ -375,7 +375,7 @@ public class HBaseResourceStore extends ResourceStore {
         Get get = new Get(rowkey);
 
         if (!fetchContent && !fetchTimestamp) {
-            get.setCheckExistenceOnly(true);
+            get.setCheckExistenceOnly(true);//serajoon校验数据是否存在但是不返回任何数据  ==> Get  Exists: true
         } else {
             if (fetchContent)
                 get.addColumn(B_FAMILY, B_COLUMN);

@@ -129,7 +129,7 @@ public class QueryUtil {
         return sql1.startsWith("select") || (sql1.startsWith("with") && sql1.contains("select"))
                 || (sql1.startsWith("explain") && sql1.contains("select"));
     }
-
+    //serajoon 去除注释
     public static String removeCommentInSql(String sql1) {
         // match two patterns, one is "-- comment", the other is "/* comment */"
         final String[] commentPatterns = new String[] { "--[^\r\n]*", "/\\*[^\\*/]*" };

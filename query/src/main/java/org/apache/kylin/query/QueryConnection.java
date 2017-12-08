@@ -36,7 +36,7 @@ public class QueryConnection {
 
     public static Connection getConnection(String project) throws SQLException {
         if (!isRegister) {
-            DriverManager.registerDriver(new Driver());
+            DriverManager.registerDriver(new Driver());//serajoon 注册calcite的Driver,只注册一次
             isRegister = true;
         }
         File olapTmp = OLAPSchemaFactory.createTempOLAPJson(ProjectInstance.getNormalizedProjectName(project),

@@ -18,20 +18,7 @@
 
 package org.apache.kylin.common;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.URL;
-import java.nio.ByteOrder;
-import java.nio.charset.Charset;
-import java.util.Map;
-import java.util.Properties;
-
+import com.google.common.base.Preconditions;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.kylin.common.restclient.RestClient;
@@ -40,7 +27,12 @@ import org.apache.kylin.common.util.OrderedProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.base.Preconditions;
+import java.io.*;
+import java.net.URL;
+import java.nio.ByteOrder;
+import java.nio.charset.Charset;
+import java.util.Map;
+import java.util.Properties;
 
 /**
  */

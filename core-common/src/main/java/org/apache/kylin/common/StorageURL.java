@@ -36,7 +36,7 @@ import com.google.common.collect.ImmutableMap;
  * Immutable by design.
  */
 public class StorageURL {
-    //serajoon CacheBuilder com.google.common ???cache在哪初始化
+    //serajoon CacheBuilder com.google.common  @Component("aclService")初始化的时候初始化
     private static final LoadingCache<String, StorageURL> cache = CacheBuilder.newBuilder()//
             .maximumSize(100)//
             .build(new CacheLoader<String, StorageURL>() {
