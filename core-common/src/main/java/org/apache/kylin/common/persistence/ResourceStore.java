@@ -75,7 +75,7 @@ abstract public class ResourceStore {
     private static final ConcurrentMap<KylinConfig, ResourceStore> CACHE = new ConcurrentHashMap<KylinConfig, ResourceStore>();
 
     private static ResourceStore createResourceStore(KylinConfig kylinConfig) {
-        StorageURL metadataUrl = kylinConfig.getMetadataUrl();
+        StorageURL metadataUrl = kylinConfig.getMetadataUrl();//serajoon kylin_metadata@hbase
         logger.info("Using metadata url " + metadataUrl + " for resource store");
         String clsName = kylinConfig.getResourceStoreImpls().get(metadataUrl.getScheme());
         try {

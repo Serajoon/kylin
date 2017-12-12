@@ -47,7 +47,7 @@ public class BackwardCompatibilityConfig {
     public BackwardCompatibilityConfig() {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
         /**
-         * serajoon 加载kylin-core-common模块的kylin-backward-compatibility.properties配置文件 向下兼容
+         * serajoon 加载kylin-core-common模块的kylin-backward-compatibility.properties配置文件 向下兼容/向后
          * 旧配置名=新配置名
          * old2new old2newPrefix
          */

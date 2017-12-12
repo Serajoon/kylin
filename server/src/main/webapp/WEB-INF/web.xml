@@ -36,7 +36,7 @@
 
     <context-param>
         <param-name>log4jConfigLocation</param-name>
-        <param-value>classpath:kylin-server-log4j.properties</param-value>
+        <param-value>classpath:kylin-server-log4j.properties</param-value><!-- 载入log4j配置文件,生成kylin.log -->
     </context-param>
     <context-param>
         <param-name>contextConfigLocation</param-name>

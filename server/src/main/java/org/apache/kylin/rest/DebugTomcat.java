@@ -36,9 +36,13 @@ public class DebugTomcat {
 
     public static void setupDebugEnv() {
         try {
-            //serajoon
-            //System.setProperty("log4j.configuration", "file:../build/conf/kylin-tools-log4j.properties");
-            System.setProperty("log4j.configuration", "../build/conf/kylin-tools-log4j.properties");
+            /**serajoon
+             发现log4j的LogManager是先通过file来加载，之后是用classLoader来加载的。
+             使用file来加载时，可以使用代码的设置，指定log4j.properties
+             System.setProperty("log4j.configuration","file:E:/project/j2se/src/com/logger/log4j.properties");
+             使用classLoader来加载时，log4j.properties文件在放对应\src目录后，当JAVA文件编译成Class文件时，log4j.properties同时会被复制过去
+             */
+            System.setProperty("log4j.configuration", "file:../build/conf/kylin-tools-log4j.properties");
             // test_case_data/sandbox/ contains HDP 2.2 site xmls which is dev sandbox
             //serajoon 将../examples/test_case_data/sandbox文件夹下的配置文件加载到classpath
             KylinConfig.setSandboxEnvIfPossible();

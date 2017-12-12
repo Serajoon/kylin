@@ -57,7 +57,7 @@ public class PasswordPlaceholderConfigurer extends PropertyPlaceholderConfigurer
         //Properties prop = KylinConfig.getKylinProperties();
         Properties prop = getAllKylinProperties();
         StringWriter writer = new StringWriter();
-        prop.store(new PrintWriter(writer), "kylin properties");
+        prop.store(new PrintWriter(writer), "kylin properties");//serajoon 将此 Properties 表中的属性列表（键和元素对）写入输出流。
         String propString = writer.getBuffer().toString();
         IOUtils.closeQuietly(writer);
         InputStream is = IOUtils.toInputStream(propString, Charset.defaultCharset());

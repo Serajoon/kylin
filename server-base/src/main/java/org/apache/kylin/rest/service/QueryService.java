@@ -149,7 +149,7 @@ public class QueryService extends BasicService {
 
     public QueryService() {
         queryStore = ResourceStore.getStore(getConfig());
-        badQueryDetector.start();
+        badQueryDetector.start();//serajoon badQueryDetector是一个多线程
     }
 
     protected static void close(ResultSet resultSet, Statement stat, Connection conn) {

@@ -288,6 +288,10 @@ public class KylinConfig extends KylinConfigBase {
     }
 
     // build kylin properties from site deployment, a.k.a KYLIN_HOME/conf/kylin.properties
+    /** serajoon
+     *  a.k.a:also known as
+     *  读取kylin配置文件，包括默认的和用户配置的
+     */
     private static Properties buildSiteProperties() {
         Properties conf = new Properties();
 
@@ -306,12 +310,13 @@ public class KylinConfig extends KylinConfigBase {
             // 1. load default configurations from classpath. 
             // we have a kylin-defaults.properties in kylin/core-common/src/main/resources
             /**serajoon 加载kylin默认配置
-             * OrderedProperties加载的配置会按顺序,JDK默认的Properties不安顺序显示
+             * OrderedProperties加载的配置会按顺序,JDK默认的Properties不按顺序显示
              */
             URL resource = Thread.currentThread().getContextClassLoader().getResource("kylin-defaults.properties");
             Preconditions.checkNotNull(resource);
             logger.info("Loading kylin-defaults.properties from {}", resource.getPath());
             OrderedProperties orderedProperties = new OrderedProperties();
+            //serajoon 获得kylin的默认配置文件kylin-defaults.properties的配置信息
             loadPropertiesFromInputStream(resource.openStream(), orderedProperties);
 
             for (int i = 0; i < 10; i++) {
@@ -325,6 +330,7 @@ public class KylinConfig extends KylinConfigBase {
 
             // 2. load site conf, to keep backward compatibility it's still named kylin.properties
             // actually it's better to be named kylin-site.properties
+            //serajoon 从kylin的KYLIN_CONF中获取用户的kylin配置文件信息kylin.properties
             File propFile = getSitePropertiesFile();
             if (propFile == null || !propFile.exists()) {
                 logger.error("fail to locate " + KYLIN_CONF_PROPERTIES_FILE);
@@ -395,7 +401,7 @@ public class KylinConfig extends KylinConfigBase {
         copy.putAll(all);
         return copy;
     }
-    
+
     public String exportToString() throws IOException {
         Properties allProps = getAllProperties();
         OrderedProperties orderedProperties = KylinConfig.buildSiteOrderedProps();
@@ -430,7 +436,7 @@ public class KylinConfig extends KylinConfigBase {
     public synchronized void reloadFromSiteProperties() {
         reloadKylinConfig(buildSiteProperties());
     }
-    
+
     public KylinConfig base() {
         return this;
     }

@@ -48,7 +48,7 @@ public class BadQueryDetector extends Thread {
 
     public BadQueryDetector() {
         super("BadQueryDetector");
-        this.setDaemon(true);
+        this.setDaemon(true);//serajoon 将该线程标记为守护线程或用户线程
         this.kylinConfig = KylinConfig.getInstanceFromEnv();
         this.detectionInterval = kylinConfig.getBadQueryDefaultDetectIntervalSeconds() * 1000L;
         this.alertMB = 100;
