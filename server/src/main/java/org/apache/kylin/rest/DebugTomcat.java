@@ -41,6 +41,7 @@ public class DebugTomcat {
              使用file来加载时，可以使用代码的设置，指定log4j.properties
              System.setProperty("log4j.configuration","file:E:/project/j2se/src/com/logger/log4j.properties");
              使用classLoader来加载时，log4j.properties文件在放对应\src目录后，当JAVA文件编译成Class文件时，log4j.properties同时会被复制过去
+             kylin-tools-log4j.properties 控制启动时日志输出级别
              */
             System.setProperty("log4j.configuration", "file:../build/conf/kylin-tools-log4j.properties");
             // test_case_data/sandbox/ contains HDP 2.2 site xmls which is dev sandbox

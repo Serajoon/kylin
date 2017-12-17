@@ -43,10 +43,10 @@ public class DefaultChainedExecutable extends AbstractExecutable implements Chai
             sub.initConfig(config);
         }
     }
-    
+    //serajoon kylin的构建cube过程
     @Override
     protected ExecuteResult doWork(ExecutableContext context) throws ExecuteException {
-        List<? extends Executable> executables = getTasks();
+        List<? extends Executable> executables = getTasks();//serajoon 构建cube的12步步骤
         final int size = executables.size();
         for (int i = 0; i < size; ++i) {
             Executable subTask = executables.get(i);
