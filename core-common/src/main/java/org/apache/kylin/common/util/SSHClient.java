@@ -257,6 +257,7 @@ public class SSHClient {
 
     public SSHClientOutput execCommand(String command, int timeoutSeconds, Logger logAppender) throws Exception {
         try {
+            command="source /etc/profile\n "+command;
             logger.info("[" + username + "@" + hostname + "] Execute command: " + command);
 
             StringBuffer text = new StringBuffer();
