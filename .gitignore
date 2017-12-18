@@ -91,4 +91,3 @@ webapp/app/kylin-servlet.xml
 webapp/app/web.xml
 
 examples/
-examples/test_case_data/sandbox/core-site.xml
