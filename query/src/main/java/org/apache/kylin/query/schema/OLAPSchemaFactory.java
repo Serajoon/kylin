@@ -114,7 +114,8 @@ public class OLAPSchemaFactory implements SchemaFactory {
             tmp.deleteOnExit();
 
             logger.info("Schema json:" + StringUtils.join(FileUtils.readLines(tmp, Charset.defaultCharset()), "\n"));
-
+            // serajoon model info $KYLIN_HOME/tomcat/temp
+            ///serajoon home/hanmeng/hadoop/kylin-2.2.0/bin/../tomcat/temp/olap_model_6085604294791406136.json
             return tmp;
 
         } catch (IOException e) {
