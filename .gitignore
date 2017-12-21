@@ -90,3 +90,21 @@ tomcat/
 webapp/app/kylin-servlet.xml
 webapp/app/web.xml
 
+examples/test_case_data/sandbox/core-site.xml
+
+
+examples/test_case_data/sandbox/hdfs-site.xml
+
+examples/test_case_data/sandbox/yarn-site.xml
+
+examples/test_case_data/sandbox/mapred-site.xml
+examples/test_case_data/sandbox/hbase-site.xml
+examples/test_case_data/sandbox/hive-site.xml
+examples/test_case_data/sandbox/kylin.properties
+
+examples/test_case_data/sandbox/kylin_hive_conf.xml
+
+examples/test_case_data/sandbox/kylin_job_conf.xml
+
+examples/test_case_data/sandbox/kylin_job_conf_inmem.xml
+
