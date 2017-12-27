@@ -29,7 +29,9 @@
 ###serajoon 进入kylin.sh文件所在的目录，加载同目录下文件名为header.sh的文件
 ###serajoon source是在当前shell环境中运行脚本。source可以让脚本影响它们的父shell环境
 ###serajoon header.sh 定义KYLIN_HOME
+###serajoon $(dirname "$0") 这个命令写在shell脚本文件中才有效，返回这个脚本文件放置的目录
 source $(cd -P -- "$(dirname -- "$0")" && pwd -P)/header.sh $@
+
 if [ "$verbose" = true ]; then
     shift
 fi
@@ -115,6 +117,7 @@ then
     verbose "kylin classpath is: $(hbase classpath)"
 
     # KYLIN_EXTRA_START_OPTS is for customized settings, checkout bin/setenv.sh
+    # sersajoon   -Djava.io.tmpdir=${tomcat_root}/temp  System.getproperty(“java.io.tmpdir”) 默认的临时文件路径
     hbase ${KYLIN_EXTRA_START_OPTS} \
     -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager \
     -Dlog4j.configuration=file:${KYLIN_HOME}/conf/kylin-server-log4j.properties \

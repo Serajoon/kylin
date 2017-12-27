@@ -42,6 +42,9 @@
         </dependency>
 
         <!-- As KylinConfigCLI will be called before Hbase/Hive/Hadoop dependency loaded, has to define the following as compile in tool -->
+        <!--serajoon
+         由于KylinConfigCLI将在Hbase/Hive/Hadoop依赖加载之前调用，因此必须将以下内容定义为编译
+        -->
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>

@@ -19,7 +19,7 @@
 
 source $(cd -P -- "$(dirname -- "$0")" && pwd -P)/header.sh
 ###serajoon $# 传给脚本的参数个数
-###serajoon 校验传递的参数个数
+###serajoon 校验传递的参数个数 如果传递的参数个数不是1个则退出
 if [ $# != 1 ]
 then
     echo 'invalid input'
@@ -27,5 +27,6 @@ then
 fi
 
 tool_jar=$(ls $KYLIN_HOME/tool/kylin-tool-*.jar)
+#serajoon 打印 ${KYLIN_HOME}/hadoop-conf
 result=`java -cp $tool_jar -Dlog4j.configuration=file:${KYLIN_HOME}/conf/kylin-tools-log4j.properties org.apache.kylin.tool.KylinConfigCLI $1 2>/dev/null`
 echo "$result"

@@ -20,7 +20,9 @@
 # source me
 
 verbose=${verbose:-""}
-
+### serajoon getopts:从参数列表中提取选项和参数
+### serajoon \?:匹配前面的字符0次或者1次，即前面的字符可有可无
+### verbose mode:详细模式
 while getopts ":v" opt; do
     case $opt in
         v)

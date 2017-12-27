@@ -31,6 +31,8 @@ public class KylinConfigCLI {
         if (args.length != 1) {
             System.err.println("Usage: KylinConfigCLI conf_name");
             System.err.println("Example: KylinConfigCLI kylin.server.mode");
+            //serajoon system.exit（0）:正常退出，程序正常执行结束退出
+            //system.exit(1):是非正常退出，就是说无论程序正在执行与否，都退出
             System.exit(1);
         }
 

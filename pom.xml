@@ -897,6 +897,7 @@
     <build>
         <pluginManagement>
             <plugins>
+                <!--serajoon kylin-server模块引用-->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
@@ -941,6 +942,11 @@
                     <artifactId>maven-shade-plugin</artifactId>
                     <version>3.0.0</version>
                 </plugin>
+                <!--serajoon kylin-server模块引用
+                    pom.xml的packaging要设为war(server模块)  WEB-INF/web.xml
+                    packagingExcludes:过滤不需要的jar包
+                    命名规则为：artifactId-version.war
+                -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
