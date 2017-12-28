@@ -49,7 +49,7 @@ if [ -z "$(command -v hadoop version)" ]
 then
     quit "Please make sure the user has the privilege to run hadoop shell"
 fi
-
+### serajoon kylin.env.hdfs-working-dir=/kylin hdfs上kylin的存储目录
 WORKING_DIR=`bash $KYLIN_HOME/bin/get-properties.sh kylin.env.hdfs-working-dir`
 if [ -z "$WORKING_DIR" ]
 then

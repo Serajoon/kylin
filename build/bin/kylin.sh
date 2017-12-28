@@ -38,9 +38,10 @@ fi
 
 source ${dir}/check-env.sh
 ###serajoon mkdir -p 可以是一个路径名称。此时若路径中的某些目录尚不存在,加上此选项后,系统将自动建立好那些尚不存在的目录,即一次可以建立多个目录;
+###serajoon 创建logs和ext文件夹
 mkdir -p ${KYLIN_HOME}/logs
 mkdir -p ${KYLIN_HOME}/ext
-
+###serajoon retrieve:检索
 function retrieveDependency() {
     #retrive $hive_dependency and $hbase_dependency
     source ${dir}/find-hive-dependency.sh

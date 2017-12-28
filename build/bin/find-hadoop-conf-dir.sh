@@ -22,6 +22,7 @@ source $(cd -P -- "$(dirname -- "$0")" && pwd -P)/header.sh
 echo Retrieving hadoop conf dir...
 
 function find_hadoop_conf_dir() {
+#serajoon kylin.env.hadoop-conf-dir:spark引擎需要配置
     override_hadoop_conf_dir=`bash ${KYLIN_HOME}/bin/get-properties.sh kylin.env.hadoop-conf-dir`
     
     if [ -n "$override_hadoop_conf_dir" ]; then
@@ -31,10 +32,23 @@ function find_hadoop_conf_dir() {
     fi
     
     hbase_classpath=`hbase classpath`
-    
+###serajoon
+# cut:是一个选取命令，默认以行为单位，就是将一段数据经过分析，取出我们想要的
+#  -d:自定义分隔符，默认为制表符
+#  -f:与-d一起使用，指定显示哪个区域，下标从1开始。 -f 1- 从第一项一直到行尾
+# sed
+# s: 替换
+# 使用后缀 /g 标记会替换每一行中的所有匹配，最后的g是global的意思，也就是全局替换，如果不加g，则只会替换本行的第一个line
+# sed 's/:/ /g' 替换所有的冒号为空格
     arr=(`echo $hbase_classpath | cut -d ":" -f 1- | sed 's/:/ /g'`)
     kylin_hadoop_conf_dir=
-    
+##serajoon
+# grep
+# -v 显示不包括查找字符的所有行
+# -E 选项使用扩展正则表达式
+# grep -v -E ".*jar" 查找所有不带.jar的即查找所有文件夹
+# kylin_hadoop_conf_dir=${HADOOP_HOME}/etc/hadoop
+# return 如果某函数中有return命令，执行到return时就返回
     for data in ${arr[@]}
     do
         result=`echo $data | grep -v -E ".*jar"`
@@ -42,7 +56,7 @@ function find_hadoop_conf_dir() {
         then
             valid_conf_dir=true
             
-            if [ ! -f $result/yarn-site.xml ]
+            if [ ! -f $result/yarn-site.xml ]#不错在continue继续循环
             then
                 verbose "$result is not valid hadoop dir conf because yarn-site.xml is missing"
                 valid_conf_dir=false
