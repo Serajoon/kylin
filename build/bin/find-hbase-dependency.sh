@@ -30,6 +30,7 @@ if [ -n "$is_aws" ] && [ -d "/usr/lib/oozie/lib" ]; then
 fi
 
 arr=(`echo $hbase_classpath | cut -d ":" -f 1- | sed 's/:/ /g'`)
+### serajoon hbase_common_path=$HBASE_HOME/lib/hbase-common-x.x.x.jar
 hbase_common_path=
 for data in ${arr[@]}
 do

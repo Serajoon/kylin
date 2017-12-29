@@ -925,6 +925,9 @@
                         <encoding>UTF-8</encoding>
                     </configuration>
                 </plugin>
+                <!--serajoon
+                构建当前项目的测试类的jar,将test-classes打包
+                -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>

@@ -21,10 +21,17 @@ source $(cd -P -- "$(dirname -- "$0")" && pwd -P)/header.sh
 
 # source me
 hive_conf_dir="${KYLIN_HOME}/conf/kylin_hive_conf.xml"
-
+### serajoon
+# -n:使用安静(silent)模式。在一般 sed 的用法中，所有来自 STDIN的资料一般都会被列出到萤幕上。但如果加上 -n 参数后，则只有经过sed 特殊处理的那一行(或者动作)才会被列出来。
+#  p:列印，亦即将某个选择的资料印出。-n选项和p命令一起使用表示只打印那些发生替换的行：
+#  |:定界符
+# \1:子串匹配标记
+# echo this is digit 7 in a number | sed 's/digit \([0-9]\)/\1/' =>this is 7 in a number
+# 命令中 digit 7，被替换成了 7。样式匹配到的子串是 7，\(..\) 用于匹配子串，对于匹配到的第一个子串就标记为 \1
+# 's/ \+//g':一个或多个空格替换成空，即去除空格 echo this is digit 7 in a number | sed 's/ \+//g' =>thisisdigit7inanumber
 names=(`sed -n 's|<name>\(.*\)</name>|\1|p'  ${hive_conf_dir} | sed 's/ \+//g'`)
 values=(`sed -n 's|<value>\(.*\)</value>|\1|p'  ${hive_conf_dir} | sed 's/ \+//g'`)
-
+###serajoon 获取数组的长度
 len_names=${#names[@]}
 len_values=${#values[@]}
 

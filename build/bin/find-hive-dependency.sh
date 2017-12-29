@@ -27,6 +27,7 @@ echo Retrieving hive dependency...
 client_mode=`bash ${KYLIN_HOME}/bin/get-properties.sh kylin.source.hive.client`
 hive_env=
 
+### serajoon hive -e service metastore服务启动后才有效果，否则为空
 if [ "${client_mode}" == "beeline" ]
 then
     beeline_params=`bash ${KYLIN_HOME}/bin/get-properties.sh kylin.source.hive.beeline-params`
@@ -34,9 +35,16 @@ then
 else
     hive_env=`hive ${hive_conf_properties} -e set 2>&1 | grep 'env:CLASSPATH'`
 fi
-
+### serajoon
+# awk是以文件的一行为处理单位的。awk每接收文件的一行，然后执行相应的命令，来处理文本
+# awk [-F  field-separator]  'commands'  input-file(s)
+# awk工作流程是这样的：读入有'\n'换行符分割的一条记录，然后将记录按指定的域分隔符划分域，填充域，
+# $0则表示所有域,$1表示第一个域,$n表示第n个域。默认域分隔符是"空白键" 或 "[tab]键",所以$1表示登录用户，$3表示登录用户ip,以此类推。
 hive_classpath=`echo $hive_env | grep 'env:CLASSPATH' | awk -F '=' '{print $2}'`
 arr=(`echo $hive_classpath | cut -d ":" -f 1- | sed 's/:/ /g'`)
+### serajoon
+# hive_exec_path=${HIVE_HOME}/lib/hive-exec-1.2.1.jar
+# hive_conf_path=${HIVE_HOME}/conf
 hive_conf_path=
 hive_exec_path=
 

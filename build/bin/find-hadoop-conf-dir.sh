@@ -40,6 +40,8 @@ function find_hadoop_conf_dir() {
 # s: 替换
 # 使用后缀 /g 标记会替换每一行中的所有匹配，最后的g是global的意思，也就是全局替换，如果不加g，则只会替换本行的第一个line
 # sed 's/:/ /g' 替换所有的冒号为空格
+# sed 's/要替换的字符串/新的字符串/g'
+# 命令中字符 / 在sed中作为定界符使用，也可以使用任意的定界符sed 's:test:TEXT:g' sed 's|test|TEXT|g'
     arr=(`echo $hbase_classpath | cut -d ":" -f 1- | sed 's/:/ /g'`)
     kylin_hadoop_conf_dir=
 ##serajoon
