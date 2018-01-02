@@ -31,6 +31,7 @@ fi
 
 arr=(`echo $hbase_classpath | cut -d ":" -f 1- | sed 's/:/ /g'`)
 ### serajoon hbase_common_path=$HBASE_HOME/lib/hbase-common-x.x.x.jar
+### grep -v tests 因为查找hbase-common时会有一个hbase-common-1.1.2-tests.jar,所以要去除这个jar
 hbase_common_path=
 for data in ${arr[@]}
 do

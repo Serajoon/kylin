@@ -31,7 +31,7 @@
         <value>2</value>
     </property>
 
-    <property>
+    <!--<property>
         <name>mapreduce.map.output.compress</name>
         <value>true</value>
         <description>Compress map outputs</description>
@@ -42,9 +42,9 @@
         <value>org.apache.hadoop.io.compress.SnappyCodec</value>
         <description>The compression codec to use for map outputs
         </description>
-    </property>
+    </property>-->
 
-    <property>
+   <!-- <property>
         <name>mapreduce.output.fileoutputformat.compress</name>
         <value>true</value>
         <description>Compress the output of a MapReduce job</description>
@@ -55,7 +55,7 @@
         <value>org.apache.hadoop.io.compress.SnappyCodec</value>
         <description>The compression codec to use for job outputs
         </description>
-    </property>
+    </property>-->
 
     <property>
         <name>mapreduce.output.fileoutputformat.compress.type</name>

@@ -59,7 +59,9 @@ function retrieveDependency() {
     if [ -f "${KYLIN_HOME}/conf/setenv.sh" ]; then
         source ${KYLIN_HOME}/conf/setenv.sh
     fi
-
+### serajoon
+# export HBASE_CLASSPATH 单独echo ${HBASE_CLASSPATH}值是空,但是
+# export HBASE_CLASSPATH=${HBASE_CLASSPATH}:xxxx 则hbase classpath时,输出的则是hbase的classpth和xxxx串
     export HBASE_CLASSPATH_PREFIX=${KYLIN_HOME}/conf:${KYLIN_HOME}/lib/*:${KYLIN_HOME}/ext/*:${HBASE_CLASSPATH_PREFIX}
     export HBASE_CLASSPATH=${HBASE_CLASSPATH}:${hive_dependency}:${kafka_dependency}:${spark_dependency}
 
@@ -118,7 +120,10 @@ then
     verbose "kylin classpath is: $(hbase classpath)"
 
     # KYLIN_EXTRA_START_OPTS is for customized settings, checkout bin/setenv.sh
-    # sersajoon   -Djava.io.tmpdir=${tomcat_root}/temp  System.getproperty(“java.io.tmpdir”) 默认的临时文件路径
+### sersajoon   -Djava.io.tmpdir=${tomcat_root}/temp  System.getproperty(“java.io.tmpdir”) 默认的临时文件路径
+# 使用hbase的RunJar启动tomcat
+# $!:Shell最后运行的后台Process的PID
+# hbase org.apache.hadoop.util.RunJar jar_name main_class 执行执行jar包中的class
     hbase ${KYLIN_EXTRA_START_OPTS} \
     -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager \
     -Dlog4j.configuration=file:${KYLIN_HOME}/conf/kylin-server-log4j.properties \

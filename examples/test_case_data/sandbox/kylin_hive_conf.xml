@@ -22,7 +22,7 @@
         <description>Block replication</description>
     </property>
 
-    <property>
+   <!-- <property>
         <name>hive.exec.compress.output</name>
         <value>true</value>
         <description>enable compress</description>
@@ -32,7 +32,7 @@
         <name>mapreduce.map.output.compress.codec</name>
         <value>org.apache.hadoop.io.compress.SnappyCodec</value>
         <description></description>
-    </property>
+    </property>-->
 
     <!--
     <property>

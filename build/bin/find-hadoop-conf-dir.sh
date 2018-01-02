@@ -58,7 +58,7 @@ function find_hadoop_conf_dir() {
         then
             valid_conf_dir=true
             
-            if [ ! -f $result/yarn-site.xml ]#不错在continue继续循环
+            if [ ! -f $result/yarn-site.xml ]#不存在continue继续循环
             then
                 verbose "$result is not valid hadoop dir conf because yarn-site.xml is missing"
                 valid_conf_dir=false

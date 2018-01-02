@@ -30,7 +30,7 @@
         <name>mapreduce.map.maxattempts</name>
         <value>2</value>
     </property>
-
+<!--
     <property>
         <name>mapreduce.map.output.compress</name>
         <value>true</value>
@@ -55,7 +55,7 @@
         <value>org.apache.hadoop.io.compress.SnappyCodec</value>
         <description>The compression codec to use for job outputs
         </description>
-    </property>
+    </property>-->
 
     <!--
     <property>
