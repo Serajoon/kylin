@@ -213,6 +213,8 @@ then
     retrieveDependency
 
     #retrive $KYLIN_EXTRA_START_OPTS from a separate file called setenv-tool.sh
+    ###serajoon
+    # 恢复元数据或者迁移的时候需要注释unset否则会报内存不足java.lang.OutOfMemoryError: Java heap space
     unset KYLIN_EXTRA_START_OPTS # unset the global server setenv config first
     if [ -f "${dir}/setenv-tool.sh" ]
         then source ${dir}/setenv-tool.sh
