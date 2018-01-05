@@ -70,7 +70,7 @@ public class HBaseResourceStore extends ResourceStore {
 
     private static final byte[] B_FAMILY = Bytes.toBytes(FAMILY);
 
-    private static final String COLUMN = "c"; //serajoon content
+    private static final String COLUMN = "c"; //serajoon 内容
 
     private static final byte[] B_COLUMN = Bytes.toBytes(COLUMN);
 
@@ -166,7 +166,7 @@ public class HBaseResourceStore extends ResourceStore {
         endRow[endRow.length - 1]++;
 
         Table table = getConnection().getTable(TableName.valueOf(tableName));
-        Scan scan = new Scan(startRow, endRow);
+        Scan scan = new Scan(startRow, endRow);//serajoon [)
         if ((filter != null && filter instanceof KeyOnlyFilter) == false) {
             scan.addColumn(B_FAMILY, B_COLUMN_TS);
             scan.addColumn(B_FAMILY, B_COLUMN);
@@ -180,7 +180,7 @@ public class HBaseResourceStore extends ResourceStore {
         try {
             ResultScanner scanner = table.getScanner(scan);
             for (Result r : scanner) {
-                String path = Bytes.toString(r.getRow());
+                String path = Bytes.toString(r.getRow());//serajoon Result.getRow() 返回行键
                 assert path.startsWith(lookForPrefix);
                 int cut = path.indexOf('/', lookForPrefix.length());
                 String child = cut < 0 ? path : path.substring(0, cut);
@@ -357,7 +357,7 @@ public class HBaseResourceStore extends ResourceStore {
     protected String getReadableResourcePathImpl(String resPath) {
         return tableName + "(key='" + resPath + "')@" + kylinConfig.getMetadataUrl();
     }
-    //serajoon 从HTable获取数据
+    //serajoon 从HTable获取数据 (路径，是否拉取内容信息，是否拉取时间信息)
     private Result getFromHTable(String path, boolean fetchContent, boolean fetchTimestamp) throws IOException {
         Table table = getConnection().getTable(TableName.valueOf(tableName));
         try {

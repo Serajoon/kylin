@@ -158,7 +158,7 @@ public class TableDesc extends RootPersistentEntity implements ISourceAware {
             return ResourceStore.TABLE_RESOURCE_ROOT + "/" + tableIdentity + "--" + prj + ".json";
     }
 
-    // returns <table, project>
+    // returns <table, project> serajoon 解析例如HG.DIM_CUSTOMS--prj_128
     public static Pair<String, String> parseResourcePath(String path) {
         if (path.endsWith(".json"))
             path = path.substring(0, path.length() - ".json".length());

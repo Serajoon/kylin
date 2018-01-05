@@ -326,7 +326,7 @@ abstract public class ResourceStore {
     }
 
     abstract protected String getReadableResourcePathImpl(String resPath);
-
+    //serajoon 将路径变为/xxx
     private String norm(String resPath) {
         resPath = resPath.trim();
         while (resPath.startsWith("//"))
